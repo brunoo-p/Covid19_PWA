@@ -6,7 +6,7 @@ import RefreshIcon from '../../../assets/imagens/refresh.svg'
 
 const navigatorHasShare = navigator.share;
 
-function Panel( {updateAt, onChange, data, country, getCovidData} ) {
+function Panel( {updateAt, onChange, data, country, getCovidData, showStates} ) {
   const { cases, recovered, todayDeaths, deaths, todayCases } = data
 
   const renderCountries = (country, index) => (
@@ -27,8 +27,8 @@ function Panel( {updateAt, onChange, data, country, getCovidData} ) {
       })
     }
 
-    const copyInfo = () => {
-      navigator.clipboard.writeText(textCovid19) 
+    const handleShowStates = () => {
+      showStates(true);
     }
 
 
@@ -37,9 +37,9 @@ function Panel( {updateAt, onChange, data, country, getCovidData} ) {
     <Button variant='contained' color='primary' style={{backgroundColor: '#99fa'}} onClick={shareInfo}> Compartilhar </Button>
     </div>
   )
-  const renderCopyButton = (
+  const renderStatesButton = (
     <div>
-      <Button variant='contained' color='secondary'  style={{backgroundColor: '#2aa3aBBa'}} onClick={copyInfo}> Copiar </Button>
+      <Button variant='contained' color='secondary'  style={{backgroundColor: '#2aa3aBBa'}} onClick={handleShowStates}> Show States </Button>
     </div>
   )
 
@@ -47,17 +47,20 @@ function Panel( {updateAt, onChange, data, country, getCovidData} ) {
     <Card>
       <CardPanelContentStyled>
         <div>
-          <Typography variant='h4' component='span' color='initial'>  Painel Coronavírus </Typography>
-          <Typography variant='body2' component='span' color='primary'>  Atualizado em: {updateAt} </Typography>
+          <Typography variant='h4' component='span' color='initial'>  Dashboard Covid19 </Typography>
+          <Typography variant='body2' component='span' color='primary'>  Updated in: {updateAt} </Typography>
           <img src={RefreshIcon} alt="Atualizar" onClick={() => getCovidData(country)} className="cursor" />
           <div className="pt-2">
             <Select onChange={onChange} value={country}>
               {COUNTRIES.map(renderCountries)}
             </Select>
           </div>
+          <>
+            {country === 'brazil' && renderStatesButton}
+          </>
         </div>
         <>
-        {navigatorHasShare ? renderShareButton : renderCopyButton}
+        {navigatorHasShare && renderShareButton}
         </>
       </CardPanelContentStyled>
     </Card>

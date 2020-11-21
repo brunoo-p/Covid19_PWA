@@ -11,19 +11,19 @@ function Board({data}){
   return(
     <Grid  container spacing={4}>
     <Grid item xs={12} md={4}>
-      <Card value={getValue(cases)} label='Total de casos' color='#e61919'/>
+      <Card value={getValue(cases)} label='Total Cases' color='#e61919'/>
     </Grid>
     <Grid item xs={12} md={4}>
-      <Card value={getValue(todayCases)} label='Novos Casos' color='#F95819'/>
+      <Card value={getValue(todayCases)} label='New Cases' color='#F95819'/>
     </Grid>
     <Grid item xs={12} md={4}>
-      <Card value={getValue(todayDeaths)} label='Óbitos hoje' color='#3336'/>
+      <Card value={getValue(todayDeaths)} label='Deaths Today' color='#3336'/>
     </Grid>
     <Grid item xs={12} md={4}>
-      <Card value={getValue(recovered)} label='Total de recuperados' color='#5a7'/>
+      <Card value={getValue(recovered)} label='Total Refuses' color='#5a7'/>
     </Grid>
     <Grid item xs={12} md={4}>
-      <Card value={getValue(deaths)} label='Total de mortos' color='#000'/>
+      <Card value={getValue(deaths)} label='Total Deaths' color='#000'/>
     </Grid>
     </Grid>
   )

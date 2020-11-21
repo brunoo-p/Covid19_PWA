@@ -2,6 +2,7 @@ import Button from './Button';
 import Card from './Card';
 import CardContent from './CardContent'
 import Grid from './Grid';
+import Input from './Input'
 import MenuItem from './MenuItem';
 import Select from './Select';
 import Skeleton from './Skeleton';
@@ -12,6 +13,7 @@ export {
   Card,
   CardContent,
   Grid,
+  Input,
   MenuItem,
   Select,
   Skeleton,
